@@ -8,24 +8,19 @@ import { HeroesService } from 'src/app/servicios/heroes.service';
   styles: []
 })
 export class BusquedaComponent implements OnInit {
-  heroes:any[] = [];
-  termino:string = "";
+  heroes: any[] = [];
+  termino: string = '';
 
-  constructor(private _activadedRotute:ActivatedRoute,
-              private _heoresServicies:HeroesService,
-              private _router:Router) {
-    
-   }
+  constructor(private _activadedRotute: ActivatedRoute, private _heoresServicies: HeroesService, private _router: Router) {}
 
   ngOnInit() {
-    this._activadedRotute.params.subscribe( params => {
+    this._activadedRotute.params.subscribe(params => {
       this.termino = params['termino'];
       this.heroes = this._heoresServicies.buscarHeroes(params['termino']);
     });
   }
 
-  verHeore(index:number){
-    this._router.navigate( ['/heroe',index] );
-}
-
+  verHeore(index: number) {
+    this._router.navigate(['/heroe', index]);
+  }
 }
